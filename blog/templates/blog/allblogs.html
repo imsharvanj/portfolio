@@ -2,6 +2,8 @@
   <!doctype html>
   <html lang="en">
     <head>
+      <!-- load static files -->
+      {% load staticfiles %}
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="">
@@ -43,29 +45,40 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="#">Linkedin</a>
-            <a class="nav-item nav-link" href="#">Resume</a>
-            <a class="nav-item nav-link active" href="#">Blog</a>
+            <a class="nav-item nav-link" href="https://github.com/imsharvanj">Github</a>
+            <a class="nav-item nav-link" href="{% static 'resume.pdf' %}">Resume</a>
+            <a class="nav-item nav-link active" href="{% url 'allblog' %}">Blog</a>
           </div>
         </div>
         </nav>
   </header>
 
   <main role="main">
-
+    <h1 class="text-center pt-3 pb-2">Welcome to Sharvan's Blog</h1>
     <div class="album py-5 bg-light">
       <div class="container">
-        <h1 class="text-center pt-3 pb-2">Welcome to Sharvan's Blog</h1>
         <h2>Latest Posts</h2>
         <hr>
-        <div class="blog-content">
+        <div class="row">
           {% for blog in blogs.all %}
-            <a href="1">
-              <h3>{{blog.title}}</h3>
-              {{blog.pub_date}}
-              <img class="img-fluid" src="{{blog.image.url}}" alt="img">
-              <p>{{blog.summary}}</p>
-            </a>
+            <div class="card mb-4 shadow-sm pt-4 pb-4">
+              <div class="card-body">
+                <div class="col-md-10 offset-md-1">
+                  <a href="{% url 'detail' blog.id %}"><h3>{{blog.title}}</h3></a>
+                  <p>{{blog.pub_date}}</p>
+                </div>
+                <div class="row">
+                  <img class="col-md-3 offset-md-1 img-fluid" src="{{blog.image.url}}" alt="{{blog.image}}" height="150" width="150">
+                  <div class="col-md-5 pt-4 card-text">
+                    <p>{{blog.summary}}</p>
+                    <br>
+                    <a href="{% url 'detail' blog.id %}">
+                      <button type="button" class="btn btn-info" name="Read More">Read More</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           {% endfor %}
         </div>
       </div>
