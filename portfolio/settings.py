@@ -29,9 +29,9 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 # set DEBUG=False before deploying 11Nov2019
-DEBUG = False
+# DEBUG = False
 
 ALLOWED_HOSTS = [
     '0.0.0.0',
