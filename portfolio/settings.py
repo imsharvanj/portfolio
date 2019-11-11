@@ -91,22 +91,24 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-DATABASES = {
+# DATABASES = {
     # 'default': {
     #     # 'ENGINE': 'django.db.backends.sqlite3',
     #     # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    #     'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql',
     #     'NAME': 'portfoliodb',
     #     'USER': 'postgres',
     #     'PASSWORD': 'django1234',
     #     'HOST': 'localhost',
     #     'PORT': '5432',
     # }
-}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# }
+DATABASE_URL = 'postgresql:///postgresql'
+DATABASES = {'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)}
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 # 11Nov2019 update db to use heroku
 # db_from_env = dj_database_url.config(conn_max_age=600)
-# print(dj_database_url)
+# print(DATABASES['default'])
 # DATABASES['default'].update(db_from_env)
 
 # Password validation
