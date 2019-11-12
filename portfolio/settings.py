@@ -26,8 +26,8 @@ SECRET_KEY = 'w&75030nkrp%l&3*8i))uv6+gatnb@ewf56h#+*6zpi&lcv*lv'
 
 # Setup environment variables 11Nov2019
 # SECRET_KEY = os.environ.get('SECRET_KEY')
-# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -103,8 +103,10 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
     #     'PORT': '5432',
     # }
 # }
-DATABASE_URL = 'postgresql:///postgresql'
+# DATABASE_URL = 'postgresql:///postgresql'
+DATABASE_URL = 'postgres://uvftrvhkzfitbh:0160394e5def05c4e608225ea45cf8be9a7f07f31ad7915478e5e0469af77c9a@ec2-23-21-91-183.compute-1.amazonaws.com:5432/db6hv3podrv1du'
 DATABASES = {'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)}
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 # 11Nov2019 update db to use heroku
 # db_from_env = dj_database_url.config(conn_max_age=600)
