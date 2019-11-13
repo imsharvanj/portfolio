@@ -91,26 +91,24 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-# DATABASES = {
-    # 'default': {
-    #     # 'ENGINE': 'django.db.backends.sqlite3',
-    #     # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'portfoliodb',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'django1234',
-    #     'HOST': 'localhost',
-    #     'PORT': '5432',
-    # }
-# }
+DATABASES = {
+    'default': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'portfoliodb',
+        'USER': 'postgres',
+        'PASSWORD': 'django1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 # DATABASE_URL = 'postgresql:///postgresql'
-DATABASE_URL = 'postgres://uvftrvhkzfitbh:0160394e5def05c4e608225ea45cf8be9a7f07f31ad7915478e5e0469af77c9a@ec2-23-21-91-183.compute-1.amazonaws.com:5432/db6hv3podrv1du'
-DATABASES = {'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)}
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# DATABASE_URL = 'postgres://uvftrvhkzfitbh:0160394e5def05c4e608225ea45cf8be9a7f07f31ad7915478e5e0469af77c9a@ec2-23-21-91-183.compute-1.amazonaws.com:5432/db6hv3podrv1du'
+# DATABASES = {'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)}
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # 11Nov2019 update db to use heroku
-# db_from_env = dj_database_url.config(conn_max_age=600)
-# print(DATABASES['default'])
+# db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)
 # DATABASES['default'].update(db_from_env)
 
 # Password validation
@@ -160,8 +158,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'portfolio/static/media')
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/static/media/'
 
 django_heroku.settings(locals())
